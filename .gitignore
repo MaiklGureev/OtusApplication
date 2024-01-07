@@ -1,15 +1,22 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+**/.gradle/
+build/
 local.properties
+.pytest_cache
+# output of HeapDumpOnOutOfMemoryError
+*.hprof
+*.log
+.DS_Store
+outputs/
+gh-pages-generated/
+# IDEA
+# Temporary files when running tests on not JetBrains fork of JVM
+# https://youtrack.jetbrains.com/issue/IDEA-202129/attachpid-files-in-the-working-dir
+**/.attach_pid*
+*.iml
+**/.idea/*
+!.idea/dictionaries/
+# Layout inspector captures
+captures/
+# gradle-profiler
+gradle-user-home
+profile-out*

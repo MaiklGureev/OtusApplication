@@ -1,20 +1,26 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    id(Plugins.androidApplication)
+    id(Plugins.kotlinParcelize)
+    kotlin(Plugins.kapt)
+    kotlin(Plugins.android)
 }
 
 android {
-    namespace = "com.example.otusapplication"
-    compileSdk = 33
+    namespace = Config.applicatiınId
+    compileSdk = Release.compileSdkVersion
 
     defaultConfig {
-        applicationId = "com.example.otusapplication"
-        minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = Config.applicatiınId
+        minSdk = Release.minSdkVersion
+        targetSdk = Release.targetSdkVersion
+        versionCode = Release.versionCode
+        versionName = Release.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = Config.testInstrumentationRunner
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 
     buildTypes {
@@ -30,19 +36,29 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
+    implementation(Dependencies.CoreLibraries.core)
+    implementation(Dependencies.CoreLibraries.cicerone)
+    implementation(Dependencies.CoreLibraries.glide)
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation(Dependencies.SupportLibraries.appCompat)
+    implementation(Dependencies.Material.material)
 
-    implementation ("com.google.dagger:dagger-android:2.50")
-    implementation ("com.google.dagger:dagger-android-support:2.50" )// if you use the support libraries
-    annotationProcessor ("com.google.dagger:dagger-android-processor:2.50")
+    implementation(Dependencies.UI.adaperDelegate)
+    implementation(Dependencies.UI.adaperDelegateViewBinding)
+
+    implementation(Dependencies.DI.dagger2)
+    implementation(Dependencies.DI.dagger2Support)
+//
+//    annotationProcessor(Dependencies.DI.dagger2Processor)
+//    annotationProcessor(Dependencies.DI.dagger2Compiler)
+    kapt(Dependencies.DI.dagger2Compiler)
+    kapt(Dependencies.DI.dagger2Processor)
+
+
+    implementation(Dependencies.NetworkLibraries.gson)
+    implementation(Dependencies.NetworkLibraries.retrofit)
+    implementation(Dependencies.NetworkLibraries.converterGson)
 }

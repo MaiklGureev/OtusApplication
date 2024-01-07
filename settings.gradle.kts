@@ -1,4 +1,5 @@
 pluginManagement {
+
     repositories {
         google()
         mavenCentral()
@@ -13,5 +14,10 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "OtusApplication"
+rootProject.name = "OtusApp"
 include(":app")
+
+
+include(":features:feature_0")
+include(":features:feature_1")
+include(":features:feature_2")
