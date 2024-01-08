@@ -3,6 +3,7 @@
  */
 object Versions {
 
+    const val securityCryptoVersion = "1.0.0"
     const val glideVersion = "4.16.0"
     const val retrofitVersion = "2.9.0"
     const val gradleVersion = "3.2.1"

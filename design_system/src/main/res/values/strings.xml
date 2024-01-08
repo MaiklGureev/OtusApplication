@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="error">Ошибка</string>
+    <string name="ok">Ок</string>
+
+    <string name="dialog_positive_txt">Да</string>
+    <string name="dialog_negative_txt">Нет</string>
+
+</resources>

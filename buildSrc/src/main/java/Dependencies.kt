@@ -1,14 +1,12 @@
 object Dependencies {
     object CoreLibraries {
-        //implementation 'com.github.bumptech.glide:glide:4.16.0'
         val core = "androidx.core:core-ktx:${Versions.kotlinVersion}"
         val cicerone = "com.github.terrakok:cicerone:${Versions.ciceroneVersion}"
         val glide = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
+        val securityCrypto = "androidx.security:security-crypto:${Versions.securityCryptoVersion}"
     }
 
     object NetworkLibraries {
-        //    implementation 'com.google.code.gson:gson:2.10.1'
-        // compile 'com.squareup.retrofit2:converter-gson:2.3.0'
         val gson = "com.google.code.gson:gson:${Versions.gsonVersion}"
         val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
         val converterGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofitVersion}"

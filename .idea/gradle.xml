@@ -13,10 +13,21 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/data" />
+            <option value="$PROJECT_DIR$/design_system" />
+            <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/features" />
             <option value="$PROJECT_DIR$/features/feature_0" />
+            <option value="$PROJECT_DIR$/features/feature_0/api" />
+            <option value="$PROJECT_DIR$/features/feature_0/impl" />
             <option value="$PROJECT_DIR$/features/feature_1" />
+            <option value="$PROJECT_DIR$/features/feature_1/api" />
+            <option value="$PROJECT_DIR$/features/feature_1/impl" />
             <option value="$PROJECT_DIR$/features/feature_2" />
+            <option value="$PROJECT_DIR$/features/feature_2/api" />
+            <option value="$PROJECT_DIR$/features/feature_2/impl" />
+            <option value="$PROJECT_DIR$/models" />
           </set>
         </option>
       </GradleProjectSettings>

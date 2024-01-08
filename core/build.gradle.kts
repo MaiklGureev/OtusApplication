@@ -1,0 +1,67 @@
+plugins {
+    id("com.android.library")
+//    id("org.jetbrains.kotlin.android")
+//    id(Plugins.androidApplication)
+    id(Plugins.kotlinParcelize)
+    kotlin(Plugins.kapt)
+    kotlin(Plugins.android)
+}
+
+android {
+    namespace = "ru.gureev.core"
+    compileSdk = 33
+
+    defaultConfig {
+        minSdk = 24
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    // Include KSP generated files
+    kotlin {
+        sourceSets.all {
+            kotlin.srcDirs("build/generated/ksp/$name/kotlin")
+        }
+    }
+}
+
+dependencies {
+
+    implementation(Dependencies.CoreLibraries.core)
+    implementation(Dependencies.CoreLibraries.cicerone)
+//    implementation(Dependencies.CoreLibraries.glide)
+//
+    implementation(Dependencies.SupportLibraries.appCompat)
+    implementation(Dependencies.Material.material)
+//
+//    implementation(Dependencies.UI.adaperDelegate)
+//    implementation(Dependencies.UI.adaperDelegateViewBinding)
+
+    implementation(Dependencies.DI.dagger2)
+    implementation(Dependencies.DI.dagger2Support)
+
+    kapt(Dependencies.DI.dagger2Compiler)
+    kapt(Dependencies.DI.dagger2Processor)
+
+
+//    implementation(Dependencies.NetworkLibraries.gson)
+//    implementation(Dependencies.NetworkLibraries.retrofit)
+//    implementation(Dependencies.NetworkLibraries.converterGson)
+}

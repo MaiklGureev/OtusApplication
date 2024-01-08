@@ -3,8 +3,9 @@ package ru.gureev.otus_app
 import android.os.Bundle
 import androidx.core.view.WindowCompat
 import com.github.terrakok.cicerone.NavigatorHolder
-import ru.gureev.otus_app.core.BaseActivity
-import ru.gureev.otus_app.databinding.ActivityMainBinding
+import ru.gureev.api.Feature0Screen
+import ru.gureev.core.BaseActivity
+import ru.gureev.core.databinding.ActivityMainBinding
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
@@ -14,12 +15,8 @@ class MainActivity : BaseActivity() {
     @Inject
     override lateinit var navigatorHolder: NavigatorHolder
 
-    val featureMediator: () -> Unit = {
-        router.newRootScreen(Screens.Feature0Screen())
-//        FeatureMediator.startSplashScreenFeature(
-//            (application as App).appComponent as AppDeps
-//        )
-    }
+    @Inject
+    lateinit var feature0Screen: Feature0Screen
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -28,9 +25,7 @@ class MainActivity : BaseActivity() {
         setContentView(binding.root)
         this.binding = binding
         if (savedInstanceState == null) {
-            println("Screens.SplashScreen")
-            featureMediator.invoke()
-//            router.newRootScreen(Screens.SplashScreen)
+            router.newRootScreen(feature0Screen.createFeature0Screen())
         }
     }
 

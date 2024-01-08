@@ -4,12 +4,20 @@ import android.app.Application
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.google.gson.TypeAdapter
+import com.google.gson.stream.JsonReader
+import com.google.gson.stream.JsonWriter
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.gureev.otus_app.R
 import ru.gureev.otus_app.utils.Constants
+import ru.gureev.otus_app.utils.NullStringDeserializer
+import java.io.IOException
+import java.net.URLDecoder
 import javax.inject.Singleton
 
 
@@ -38,6 +46,28 @@ object NetworkModule {
     fun provideGlideInstance(application: Application, requestOptions: RequestOptions): RequestManager {
         return Glide.with(application)
             .setDefaultRequestOptions(requestOptions)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGsonBuilder(): Gson {
+        return GsonBuilder()
+            .registerTypeAdapter(
+                String::class.java,
+                object : TypeAdapter<String?>() {
+                    @Throws(IOException::class)
+                    override fun write(out: JsonWriter, value: String?) {
+                        out.value(value)
+                    }
+
+                    @Throws(IOException::class)
+                    override fun read(reader: JsonReader): String? {
+                        val line = reader.nextString()
+                        return URLDecoder.decode(line, "UTF-8")
+                    }
+                })
+            .registerTypeAdapter(String::class.java, NullStringDeserializer())
+            .create()
     }
 
 }
