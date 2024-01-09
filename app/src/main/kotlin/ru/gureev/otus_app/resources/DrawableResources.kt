@@ -4,8 +4,9 @@ import android.content.Context
 import androidx.appcompat.content.res.AppCompatResources
 import ru.gureev.core.extensions.unsafeLazy
 import ru.gureev.core.resources.IDrawableResources
+import javax.inject.Inject
 
-class DrawableResources(
+class DrawableResources @Inject constructor(
     private val context: Context
 ) : IDrawableResources {
 

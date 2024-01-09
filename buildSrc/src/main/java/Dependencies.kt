@@ -10,7 +10,7 @@ object Dependencies {
         val gson = "com.google.code.gson:gson:${Versions.gsonVersion}"
         val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
         val converterGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofitVersion}"
-
+        val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptorVersion}"
     }
 
     object SupportLibraries {

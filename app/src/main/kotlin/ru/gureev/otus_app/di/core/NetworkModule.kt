@@ -11,8 +11,13 @@ import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonWriter
 import dagger.Module
 import dagger.Provides
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import ru.gureev.otus_app.BuildConfig
 import ru.gureev.otus_app.R
 import ru.gureev.otus_app.utils.Constants
 import ru.gureev.otus_app.utils.NullStringDeserializer
@@ -23,14 +28,49 @@ import javax.inject.Singleton
 
 @Module
 object NetworkModule {
+
     @Singleton
     @Provides
-    fun provideRetrofitInstance(): Retrofit {
+    fun provideOkHttpClientInstance(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+        return OkHttpClient().newBuilder().apply {
+            addInterceptor(Interceptor { chain ->
+                val original: Request = chain.request()
+
+                // Настраиваем запросы
+                val request: Request = original.newBuilder()
+                    .header(Constants.BASE_KEY_HEADER, Constants.API_KEY)
+                    .method(original.method, original.body)
+                    .build()
+                chain.proceed(request)
+            })
+            addInterceptor(interceptor = loggingInterceptor)
+        }.build()
+
+    }
+
+    @Singleton
+    @Provides
+    fun provideRetrofitInstance(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
 //            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
             .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideHttpLoggingInterceptorInstance(): HttpLoggingInterceptor {
+        return HttpLoggingInterceptor().apply {
+            val level = if (BuildConfig.DEBUG) {
+                HttpLoggingInterceptor.Level.BODY
+            } else {
+                HttpLoggingInterceptor.Level.NONE
+            }
+
+            setLevel(level)
+        }
     }
 
     @Singleton

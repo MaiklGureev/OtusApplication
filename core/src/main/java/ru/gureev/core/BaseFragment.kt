@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import dagger.android.support.DaggerFragment
+import ru.gureev.core.extensions.makeGone
+import ru.gureev.core.extensions.makeVisible
 import javax.inject.Inject
 
 abstract class BaseFragment<Binding : ViewBinding, VM : BaseViewModel>(
@@ -34,6 +36,14 @@ abstract class BaseFragment<Binding : ViewBinding, VM : BaseViewModel>(
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = bindingInflater(inflater, container, false)
         return binding?.root
+    }
+
+    fun showLoader(): Unit {
+        (binding?.root as View).findViewById<View>(R.id.progress).makeVisible()
+    }
+
+    fun closeLoader(): Unit {
+        (binding?.root as View).findViewById<View>(R.id.progress).makeGone()
     }
 
     override fun onDestroyView() {

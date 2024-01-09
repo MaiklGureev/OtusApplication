@@ -4,8 +4,9 @@ import android.content.Context
 import android.media.AudioManager
 import android.media.MediaPlayer
 import ru.gureev.core.resources.ISoundResources
+import javax.inject.Inject
 
-class SoundResources(private val context: Context) : ISoundResources {
+class SoundResources @Inject constructor(private val context: Context) : ISoundResources {
 
     private val rawsIds = listOf<Int>()
 

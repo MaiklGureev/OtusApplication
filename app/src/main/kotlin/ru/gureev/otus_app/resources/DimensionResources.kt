@@ -4,8 +4,9 @@ import android.content.Context
 import androidx.annotation.DimenRes
 import ru.gureev.core.extensions.unsafeLazy
 import ru.gureev.core.resources.IDimensionResources
+import javax.inject.Inject
 
-class DimensionResources(
+class DimensionResources @Inject constructor(
     context: Context
 ) : IDimensionResources {
 

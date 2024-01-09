@@ -43,6 +43,7 @@ android {
 }
 
 dependencies {
+    implementation(project(mapOf("path" to ":design_system")))
 
     implementation(Dependencies.CoreLibraries.core)
     implementation(Dependencies.CoreLibraries.cicerone)

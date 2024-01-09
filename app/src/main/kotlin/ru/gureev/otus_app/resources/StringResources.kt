@@ -4,8 +4,9 @@ import android.content.Context
 import ru.gureev.core.extensions.unsafeLazy
 import ru.gureev.core.resources.IStringResources
 import ru.gureev.otus_app.R
+import javax.inject.Inject
 
-class StringResources(
+class StringResources @Inject constructor(
     private val context: Context,
 ) : IStringResources {
 

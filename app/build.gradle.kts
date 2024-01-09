@@ -76,7 +76,6 @@ android {
         }
     }
 
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -122,5 +121,6 @@ dependencies {
 
     implementation(Dependencies.NetworkLibraries.gson)
     implementation(Dependencies.NetworkLibraries.retrofit)
+    implementation(Dependencies.NetworkLibraries.loggingInterceptor)
     implementation(Dependencies.NetworkLibraries.converterGson)
 }
