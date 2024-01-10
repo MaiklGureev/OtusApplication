@@ -13,6 +13,7 @@ class Feature0Fragment : BaseFragment<FragmentFeature0Binding, Feature0ViewModel
 ) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.loadData()
         binding?.apply {
             viewModel.counterText.observe(viewLifecycleOwner) {
                 tvLoading.text = it

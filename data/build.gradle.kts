@@ -42,4 +42,7 @@ dependencies {
     kapt(Dependencies.CoreLibraries.roomCompiler)
 
     implementation(Dependencies.NetworkLibraries.retrofit)
+
+    testCompileOnly("org.mockito:mockito-core:2.6.3")
+    androidTestCompileOnly("'org.mockito:mockito-android:2.6.3")
 }
