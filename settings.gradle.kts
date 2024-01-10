@@ -22,6 +22,7 @@ include(":data")
 include(":domain")
 include(":models")
 include(":design_system")
+include(":delegates")
 
 include(":features:feature_0")
 include(":features:feature_0:api")

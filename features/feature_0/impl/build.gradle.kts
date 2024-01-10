@@ -32,19 +32,12 @@ android {
     buildFeatures {
         viewBinding = true
     }
-
-    //Include KSP generated files
-    kotlin {
-        sourceSets.all {
-            kotlin.srcDirs("build/generated/ksp/$name/kotlin")
-        }
-    }
 }
 
 dependencies {
     api(project(mapOf("path" to ":core")))
     api(project(mapOf("path" to ":data")))
-//    api(project(mapOf("path" to ":domain")))
+    api(project(mapOf("path" to ":domain")))
     api(project(mapOf("path" to ":models")))
     api(project(mapOf("path" to ":design_system")))
 
@@ -53,6 +46,10 @@ dependencies {
     implementation(Dependencies.CoreLibraries.core)
     implementation(Dependencies.CoreLibraries.cicerone)
     implementation(Dependencies.NetworkLibraries.retrofit)
+
+    implementation(Dependencies.UI.recycler)
+    implementation(Dependencies.UI.adaperDelegate)
+    implementation(Dependencies.UI.adaperDelegateViewBinding)
 
     implementation(Dependencies.DI.dagger2)
     implementation(Dependencies.DI.dagger2Support)

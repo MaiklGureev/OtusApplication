@@ -12,6 +12,10 @@ class MarketNewsLocalDatasource @Inject constructor(
         return appDatabase.marketNewsDao().getByCategory(category)
     }
 
+    override suspend fun getMarketNewsCategories(): List<String> {
+        return appDatabase.marketNewsDao().getNewsCategories()
+    }
+
     override suspend fun insertMarketNews(news: List<MarketNewsEntity>) {
         return appDatabase.marketNewsDao().insertAll(news)
     }
@@ -20,5 +24,6 @@ class MarketNewsLocalDatasource @Inject constructor(
 
 interface IMarketNewsLocalDatasource {
     suspend fun getMarketNews(category: String): List<MarketNewsEntity>
+    suspend fun getMarketNewsCategories(): List<String>
     suspend fun insertMarketNews(news: List<MarketNewsEntity>)
 }

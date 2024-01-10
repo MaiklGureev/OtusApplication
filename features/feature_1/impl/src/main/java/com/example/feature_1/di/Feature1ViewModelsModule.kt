@@ -7,10 +7,13 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import ru.gureev.core.view_model.ViewModelKey
 
-@Module
+@Module(includes = [Feature1ViewModelsModule.DataBinds::class])
 abstract class Feature1ViewModelsModule {
-    @Binds
-    @IntoMap
-    @ViewModelKey(Feature1ViewModel::class)
-    abstract fun bindFeature1ViewModel(viewModel: Feature1ViewModel): ViewModel
+    @Module
+    interface DataBinds {
+        @Binds
+        @IntoMap
+        @ViewModelKey(Feature1ViewModel::class)
+        fun bindFeature1ViewModel(viewModel: Feature1ViewModel): ViewModel
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.feature_1.di
+package com.example.feature_2.di
 
 import javax.inject.Scope
 

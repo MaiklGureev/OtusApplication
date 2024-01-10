@@ -28,12 +28,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    // Include KSP generated files
-    kotlin {
-        sourceSets.all {
-            kotlin.srcDirs("build/generated/ksp/$name/kotlin")
-        }
-    }
+
 }
 
 dependencies {

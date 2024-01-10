@@ -1,7 +1,6 @@
 package ru.gureev.otus_app
 
 import android.os.Bundle
-import androidx.core.view.WindowCompat
 import com.github.terrakok.cicerone.NavigatorHolder
 import ru.gureev.api.Feature0Screen
 import ru.gureev.core.BaseActivity
@@ -27,11 +26,6 @@ class MainActivity : BaseActivity() {
         if (savedInstanceState == null) {
             router.newRootScreen(feature0Screen.createFeature0Screen())
         }
-    }
-
-    override fun onPostCreate(savedInstanceState: Bundle?) {
-        super.onPostCreate(savedInstanceState)
-        WindowCompat.setDecorFitsSystemWindows(window, false)
     }
 
     override fun onDestroy() {

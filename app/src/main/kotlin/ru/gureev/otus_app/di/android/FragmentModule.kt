@@ -1,11 +1,9 @@
 package ru.gureev.otus_app.di.android
 
 import com.example.feature_1.Feature1Fragment
-import com.example.feature_1.Feature2Fragment
-import com.example.feature_1.di.Feature1Module
 import com.example.feature_1.di.Feature1ViewModelsModule
-import com.example.feature_1.di.Feature2Module
-import com.example.feature_1.di.Feature2ViewModelsModule
+import com.example.feature_2.Feature2Fragment
+import com.example.feature_2.di.Feature2ViewModelsModule
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import dagger.Module
 import dagger.Provides
@@ -14,7 +12,6 @@ import ru.gureev.api.Feature0Screen
 import ru.gureev.api.Feature1Screen
 import ru.gureev.api.Feature2Screen
 import ru.gureev.feature_0.Feature0Fragment
-import ru.gureev.feature_0.di.Feature0Module
 import ru.gureev.feature_0.di.Feature0ViewModelsModule
 
 @Module(includes = [FragmentModule.DataBinds::class])
@@ -39,9 +36,9 @@ class FragmentModule {
 
     @Provides
     fun provideFeature2Screen(): Feature2Screen = object : Feature2Screen {
-        override fun createFeature2Screen(): FragmentScreen {
+        override fun createFeature2Screen(category: String): FragmentScreen {
             return FragmentScreen {
-                Feature2Fragment.newInstance()
+                Feature2Fragment.newInstance(category)
             }
         }
     }
@@ -50,7 +47,6 @@ class FragmentModule {
     interface DataBinds {
         @ContributesAndroidInjector(
             modules = [
-                Feature0Module::class,
                 Feature0ViewModelsModule::class,
             ]
         )
@@ -58,7 +54,6 @@ class FragmentModule {
 
         @ContributesAndroidInjector(
             modules = [
-                Feature1Module::class,
                 Feature1ViewModelsModule::class,
             ]
         )
@@ -66,7 +61,6 @@ class FragmentModule {
 
         @ContributesAndroidInjector(
             modules = [
-                Feature2Module::class,
                 Feature2ViewModelsModule::class,
             ]
         )

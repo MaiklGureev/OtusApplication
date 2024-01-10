@@ -12,6 +12,8 @@ class StringResources @Inject constructor(
 
     override val appTitle: String by lazyString(R.string.app_name)
 
+    override val loading: String by lazyString(ru.gureev.feature_0.R.string.loading)
+
     private fun lazyString(stringId: Int) = unsafeLazy {
         context.getString(stringId)
     }

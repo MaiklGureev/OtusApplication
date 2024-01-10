@@ -32,12 +32,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    // Include KSP generated files
-    kotlin {
-        sourceSets.all {
-            kotlin.srcDirs("build/generated/ksp/$name/kotlin")
-        }
-    }
+
 }
 
 dependencies {
@@ -46,9 +41,17 @@ dependencies {
     api(project(mapOf("path" to ":domain")))
     api(project(mapOf("path" to ":models")))
     api(project(mapOf("path" to ":design_system")))
+    api(project(mapOf("path" to ":delegates")))
 
     implementation(Dependencies.CoreLibraries.core)
     implementation(Dependencies.CoreLibraries.cicerone)
+    implementation(Dependencies.CoreLibraries.glide)
+
+    implementation(Dependencies.Material.material)
+
+    implementation(Dependencies.UI.recycler)
+    implementation(Dependencies.UI.adaperDelegate)
+    implementation(Dependencies.UI.adaperDelegateViewBinding)
 
     implementation(Dependencies.DI.dagger2)
     implementation(Dependencies.DI.dagger2Support)

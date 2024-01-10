@@ -16,7 +16,7 @@ interface MarketNewsDao {
     fun getByCategory(category: String): List<MarketNewsEntity>
 
     @Query("select category from MarketNewsEntity group by category")
-    fun getCategory(): List<String>
+    fun getNewsCategories(): List<String>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(marketNews: List<MarketNewsEntity>)

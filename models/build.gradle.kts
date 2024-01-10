@@ -30,6 +30,9 @@ android {
 }
 
 dependencies {
+    implementation(project(mapOf("path" to ":core")))
+    implementation(project(mapOf("path" to ":delegates")))
+
     implementation(Dependencies.CoreLibraries.roomCommon)
     implementation(Dependencies.NetworkLibraries.gson)
 }

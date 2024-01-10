@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/size_2dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/size_40dp"
+        app:cardCornerRadius="@dimen/size_6dp"
+        app:cardUseCompatPadding="true">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/size_12dp">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                style="@style/FuturaText.Black.Bold.20sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                tools:text="test text" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:elevation="@dimen/size_40dp"
+                android:gravity="center"
+                app:cardCornerRadius="@dimen/size_6dp"
+                app:cardUseCompatPadding="true">
+
+                <ImageView
+                    android:id="@+id/ivPhoto"
+                    style="@style/FuturaText.Black.Bold.20sp"
+                    android:layout_width="@dimen/size_200dp"
+                    android:layout_height="@dimen/size_200dp" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tvDescription"
+                style="@style/FuturaText.Black.18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_12dp"
+                tools:text="test text test text test text test text test text test text" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                style="@style/FuturaText.Black.16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_12dp"
+                tools:text="20.20.2020" />
+
+            <TextView
+                android:id="@+id/tvLink"
+                style="@style/FuturaText.Blue.14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_12dp"
+                android:maxLines="2"
+                tools:text="link" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</FrameLayout>

@@ -28,4 +28,5 @@ abstract class BaseViewModel : ViewModel() {
         //Logg.e { "handleFailureUseCaseSuspend: ${failure.result}" }
         this.failure.postValue(failure)
     }
+
 }

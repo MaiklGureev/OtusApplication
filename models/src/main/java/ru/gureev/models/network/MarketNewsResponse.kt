@@ -9,7 +9,7 @@ data class MarketNewsResponse(
     var category: String? = null,
 
     @SerializedName("datetime")
-    var datetime: Int? = null,
+    var datetime: Long? = null,
 
     @SerializedName("headline")
     var headline: String? = null,

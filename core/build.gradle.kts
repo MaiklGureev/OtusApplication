@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
-//    id("org.jetbrains.kotlin.android")
-//    id(Plugins.androidApplication)
+
     id(Plugins.kotlinParcelize)
     kotlin(Plugins.kapt)
     kotlin(Plugins.android)
@@ -34,12 +33,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    // Include KSP generated files
-    kotlin {
-        sourceSets.all {
-            kotlin.srcDirs("build/generated/ksp/$name/kotlin")
-        }
-    }
+
 }
 
 dependencies {

@@ -14,7 +14,7 @@ data class MarketNewsEntity(
     var category: String?,
 
     @ColumnInfo("datetime")
-    var datetime: Int?,
+    var datetime: Long?,
 
     @ColumnInfo("headline")
     var headline: String?,
