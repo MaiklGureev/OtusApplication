@@ -12,6 +12,5 @@ abstract class Feature1ViewModelsModule {
     @Binds
     @IntoMap
     @ViewModelKey(Feature1ViewModel::class)
-    @Feature1Scope
     abstract fun bindFeature1ViewModel(viewModel: Feature1ViewModel): ViewModel
 }

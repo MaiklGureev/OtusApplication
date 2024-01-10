@@ -47,6 +47,9 @@ dependencies {
 
     implementation(Dependencies.CoreLibraries.core)
     implementation(Dependencies.CoreLibraries.cicerone)
+    implementation(Dependencies.CoreLibraries.lifecycleLiveData)
+    implementation(Dependencies.CoreLibraries.lifecycleViewModelScope)
+    implementation(Dependencies.CoreLibraries.lifecycleLifecycleScope)
 //    implementation(Dependencies.CoreLibraries.glide)
 //
     implementation(Dependencies.SupportLibraries.appCompat)

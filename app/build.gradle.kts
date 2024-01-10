@@ -107,6 +107,9 @@ dependencies {
     implementation(Dependencies.CoreLibraries.cicerone)
     implementation(Dependencies.CoreLibraries.glide)
 
+    implementation(Dependencies.CoreLibraries.room)
+    kapt(Dependencies.CoreLibraries.roomCompiler)
+
     implementation(Dependencies.SupportLibraries.appCompat)
     implementation(Dependencies.Material.material)
 

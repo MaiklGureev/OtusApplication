@@ -1,6 +1,7 @@
 package ru.gureev.core.extensions
 
-import android.view.View
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.util.*
@@ -83,14 +84,14 @@ fun LocalDateTime.withoutNs(): LocalDateTime {
     return withNano(0)
 }
 
-fun View.makeGone() {
-    this.visibility = View.GONE
+suspend fun <T> doOnDefault(doFun: suspend () -> T) = withContext(Dispatchers.Default) {
+    doFun()
 }
 
-fun View.makeVisible() {
-    this.visibility = View.VISIBLE
+suspend fun <T> doOnMain(doFun: suspend () -> T) = withContext(Dispatchers.Main) {
+    doFun()
 }
 
-fun View.makeInvisible() {
-    this.visibility = View.INVISIBLE
+suspend fun <T> doOnIO(doFun: suspend () -> T) = withContext(Dispatchers.IO) {
+    doFun()
 }

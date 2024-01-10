@@ -42,10 +42,10 @@ android {
 
 dependencies {
     api(project(mapOf("path" to ":core")))
-    implementation(project(mapOf("path" to ":data")))
-    implementation(project(mapOf("path" to ":domain")))
-    implementation(project(mapOf("path" to ":models")))
-    implementation(project(mapOf("path" to ":design_system")))
+    api(project(mapOf("path" to ":data")))
+    api(project(mapOf("path" to ":domain")))
+    api(project(mapOf("path" to ":models")))
+    api(project(mapOf("path" to ":design_system")))
 
     implementation(project(mapOf("path" to ":features:feature_2:api")))
 
@@ -55,4 +55,7 @@ dependencies {
 
     implementation(Dependencies.DI.dagger2)
     implementation(Dependencies.DI.dagger2Support)
+
+    kapt(Dependencies.DI.dagger2Compiler)
+    kapt(Dependencies.DI.dagger2Processor)
 }

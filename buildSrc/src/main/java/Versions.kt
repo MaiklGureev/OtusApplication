@@ -3,12 +3,14 @@
  */
 object Versions {
 
+    const val roomVersion = "2.6.1"
     const val securityCryptoVersion = "1.0.0"
     const val glideVersion = "4.16.0"
     const val retrofitVersion = "2.9.0"
     const val loggingInterceptorVersion = "4.12.0"
     const val gradleVersion = "3.2.1"
     const val kotlinVersion = "1.12.0"
+    const val lifecycleVersion = "2.4.0"
 
     const val appCompatVersion = "1.6.1"
     const val jUnitVersion = "4.12"

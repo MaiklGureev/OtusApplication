@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import dagger.android.support.DaggerFragment
+import ru.gureev.core.exception.Failure
 import ru.gureev.core.extensions.makeGone
 import ru.gureev.core.extensions.makeVisible
 import javax.inject.Inject
@@ -26,10 +27,6 @@ abstract class BaseFragment<Binding : ViewBinding, VM : BaseViewModel>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        updateViewModel()
-    }
-
-    fun updateViewModel(): Unit {
         viewModel = ViewModelProvider(this, providerFactory)[clazz]
     }
 
@@ -38,11 +35,20 @@ abstract class BaseFragment<Binding : ViewBinding, VM : BaseViewModel>(
         return binding?.root
     }
 
-    fun showLoader(): Unit {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.failure.observe(viewLifecycleOwner) { showFailureHandler(it) }
+    }
+
+    open fun showFailureHandler(failure: Failure) {
+
+    }
+
+    fun showLoader() {
         (binding?.root as View).findViewById<View>(R.id.progress).makeVisible()
     }
 
-    fun closeLoader(): Unit {
+    fun closeLoader() {
         (binding?.root as View).findViewById<View>(R.id.progress).makeGone()
     }
 

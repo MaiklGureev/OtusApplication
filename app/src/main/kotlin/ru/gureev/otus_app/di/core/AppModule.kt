@@ -2,6 +2,7 @@ package ru.gureev.otus_app.di.core
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.room.Room
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import dagger.Binds
@@ -11,6 +12,9 @@ import ru.gureev.core.resources.IColorResources
 import ru.gureev.core.resources.IDrawableResources
 import ru.gureev.core.resources.IStringResources
 import ru.gureev.core.resources.IUserPreferencesManager
+import ru.gureev.data.room.AppDatabase
+import ru.gureev.otus_app.resources.ColorResources
+import ru.gureev.otus_app.resources.DrawableResources
 import ru.gureev.otus_app.resources.StringResources
 import ru.gureev.otus_app.resources.UserPreferencesManager
 import ru.gureev.otus_app.utils.Constants.SHARED_PREFERENCES_NAME
@@ -31,6 +35,14 @@ class AppModule {
         )
     }
 
+    @Provides
+    fun provideRoomDatabase(applicationContext: Context): AppDatabase {
+        return Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java, "market-news-db"
+        ).build()
+    }
+
     @Module
     interface DataBinds {
 
@@ -38,10 +50,10 @@ class AppModule {
         fun bindsStringResources(value: StringResources): IStringResources
 
         @Binds
-        fun bindsDrawableResources(value: IDrawableResources): IDrawableResources
+        fun bindsDrawableResources(value: DrawableResources): IDrawableResources
 
         @Binds
-        fun bindsColorResources(value: IColorResources): IColorResources
+        fun bindsColorResources(value: ColorResources): IColorResources
 
         @Binds
         fun bindsUserPreferencesManager(value: UserPreferencesManager): IUserPreferencesManager

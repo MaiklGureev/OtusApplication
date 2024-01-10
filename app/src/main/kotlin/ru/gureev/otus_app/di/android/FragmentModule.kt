@@ -3,10 +3,8 @@ package ru.gureev.otus_app.di.android
 import com.example.feature_1.Feature1Fragment
 import com.example.feature_1.Feature2Fragment
 import com.example.feature_1.di.Feature1Module
-import com.example.feature_1.di.Feature1Scope
 import com.example.feature_1.di.Feature1ViewModelsModule
 import com.example.feature_1.di.Feature2Module
-import com.example.feature_1.di.Feature2Scope
 import com.example.feature_1.di.Feature2ViewModelsModule
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import dagger.Module
@@ -17,7 +15,6 @@ import ru.gureev.api.Feature1Screen
 import ru.gureev.api.Feature2Screen
 import ru.gureev.feature_0.Feature0Fragment
 import ru.gureev.feature_0.di.Feature0Module
-import ru.gureev.feature_0.di.Feature0Scope
 import ru.gureev.feature_0.di.Feature0ViewModelsModule
 
 @Module(includes = [FragmentModule.DataBinds::class])
@@ -49,20 +46,16 @@ class FragmentModule {
         }
     }
 
-
     @Module
     interface DataBinds {
-        @Feature0Scope
         @ContributesAndroidInjector(
             modules = [
                 Feature0Module::class,
                 Feature0ViewModelsModule::class,
             ]
-
         )
         fun contributeFeature0Fragment(): Feature0Fragment
 
-        @Feature1Scope
         @ContributesAndroidInjector(
             modules = [
                 Feature1Module::class,
@@ -71,7 +64,6 @@ class FragmentModule {
         )
         fun contributeFeature1Fragment(): Feature1Fragment
 
-        @Feature2Scope
         @ContributesAndroidInjector(
             modules = [
                 Feature2Module::class,

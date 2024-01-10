@@ -5,7 +5,6 @@ import ru.gureev.core.BaseViewModel
 import javax.inject.Inject
 
 class Feature1ViewModel @Inject constructor(
-
     var feature2Screen: Feature2Screen
 ) : BaseViewModel() {
 
